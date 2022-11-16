@@ -31,7 +31,8 @@ public class OutP {
     }
 
     public void execSt() {
-        
+        // Probably best to have ParseDeclIdList(), ParseDeclId(), ParseSSIdList() and ParseSSId() to provide context; similarly execReadIdList() and execWriteIdList() 
+
     }
 
 
