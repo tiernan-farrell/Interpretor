@@ -15,14 +15,26 @@ public class Op {
         // Case for int 
         if (t.getToken() == 31) {
             // parse int 
+            int val = t.intVal();
+            t.skipToken();
         }
         else if (t.getToken() == 32) { 
             // parse ID
-        } else {
-            // parse exp 
+            id = Id.parseId();
             t.skipToken();
+        } else {
+            // skip openign paren 
+            t.skipToken();
+            // parse exp 
             e = new Exp(); 
             e.parseExp();
+
+            // check for closing paren 
+            if (t.getToken() != 21) { 
+                System.out.println("ERROR: Missing closing parens on expression");
+                System.exit(0);
+            } 
+            // skip closing paren
             t.skipToken();
         }
     }

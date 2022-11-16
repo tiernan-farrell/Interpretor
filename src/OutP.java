@@ -16,6 +16,13 @@ public class OutP {
         // parse IdList
         list = new IdList();
         list.parseIdList();
+        // check for ending ; 
+        if (t.getToken() != 12) { 
+            System.out.println("ERROR: Missing semicolon on write statement");
+            System.exit(0);
+        } 
+        // skip ; 
+        t.skipToken();
     }
 
 
@@ -24,7 +31,7 @@ public class OutP {
     }
 
     public void execSt() {
-
+        
     }
 
 

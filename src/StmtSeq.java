@@ -28,6 +28,9 @@ public class StmtSeq {
     }
 
     public void execStmtSeq() { 
-
+        s.execSt();
+        if (ss != null) { 
+            ss.execStmtSeq();
+        }
     }
 }

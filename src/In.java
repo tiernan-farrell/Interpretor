@@ -17,6 +17,13 @@ public class In {
         // parse IdList
         list = new IdList();
         list.parseIdList();
+        // Check for ending ; 
+        if (t.getToken() != 12) { 
+            System.out.println("ERROR: Missing semicolon after read statement");
+            System.exit(0);
+        }
+        // skip ; 
+        t.skipToken(); 
     }
     public void printSt() { 
         

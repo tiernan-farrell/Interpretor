@@ -28,5 +28,12 @@ public class Assign extends Stmt{
         t.skipToken();
         exp = new Exp();
         exp.parseExp();
+        // Ensure there is a semicolon 
+        if (t.getToken() != 12) { 
+            System.out.println("ERROR: Missing semicolon on assignment");
+            System.exit(0);
+        } 
+        // skip past semicolon token 
+        t.skipToken();
     }
 }

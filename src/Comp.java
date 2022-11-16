@@ -19,20 +19,21 @@ public class Comp {
         // Next parse first op 
         o1 = new Op();
         o1.parseOp();
-        t.skipToken();
+
         // Now parse comp op 
         cOp = new CompOp(); 
         cOp.parseCompOp();
-        t.skipToken();
         // Now parse op2 
         o2 = new Op();
         o2.parseOp();
-        t.skipToken();
+
         // ensure closing parens
         if (t.getToken() != 21) { 
             System.out.println("ERROR: No closing parentheses on compare");
             System.exit(0);
         }
+        // skip closing paren 
+        t.skipToken();
     } 
 
 }

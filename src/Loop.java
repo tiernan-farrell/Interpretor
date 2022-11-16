@@ -28,9 +28,21 @@ public class Loop {
         ss.parseStmtSeq();
         // ensure end
         if (t.getToken() != 3) { 
-            System.out.println("ERROR: Expected a 'end' token not receieved");
+            System.out.println("ERROR: Expected a 'end' token after loop not receieved");
             System.exit(0);   
         }
+        // skip 'end' token 
+        t.skipToken();
+        
+        // Check for ; 
+        if (t.getToken() != 12) { 
+            System.out.println("ERROR: Missing semicolon on assignment");
+            System.exit(0);
+        } 
+        // skip ;
+        t.skipToken();
+
+
 
     }
 
@@ -48,6 +60,4 @@ public class Loop {
             ss.execStmtSeq();
         }
     }
-
-
 }

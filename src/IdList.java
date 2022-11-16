@@ -22,7 +22,6 @@ public class IdList {
         }
         // parse Id
         id = Id.parseId();
-        t.skipToken();
         // Check if next token is comma meaning more Ids
         if (t.getToken() == 13) { 
             list = new IdList();

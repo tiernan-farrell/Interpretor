@@ -24,6 +24,7 @@ public class If {
             System.out.println("ERROR: expected 'then' token not received");
             System.exit(0);
         }
+        // skip 'then' token 
         t.skipToken();
         // parse SS1
         ss1 = new StmtSeq();
@@ -40,6 +41,14 @@ public class If {
             System.out.println("ERROR: expected 'end' token not received");
             System.exit(0);
         }
+        // skip 'end' token 
+        t.skipToken();
+        if (t.getToken() != 12) { 
+            System.out.println("ERROR: Missing semicolon on end of if statement");
+            System.exit(0);
+        } 
+        // skip semicolon token 
+        t.skipToken();
     }
 
     public void printSt() { 
@@ -63,7 +72,6 @@ public class If {
         if (ss2 != null) { 
             ss2.execStmtSeq();
         }
-
     }
 
 
