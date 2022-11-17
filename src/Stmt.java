@@ -15,33 +15,33 @@ public abstract class Stmt {
     abstract void parseSt();
 
 
-    public void parseStmt() {  
-        switch (t.getToken()) { 
-            // Assign 
-            case 32: 
-                sAssign = new Assign();
-                sAssign.parseSt();
-                break;
-            // If 
-            case 5: 
-                sIf = new If();
-                sIf.parseSt();
-                break;
-            // Loop 
-            case 9: 
-                sLoop = new Loop();
-                sLoop.parseSt();
-                break;
-            // out
-            case 11: 
-                sOut = new OutP();
-                sOut.parseSt();
-                break;
-            // Out 
-            case 10: 
-                sIn = new In();
-                sIn.parseSt();
-                break;
-        }
-    }
+    // public void parseStmt() {  
+    //     switch (t.getToken()) { 
+    //         // Assign 
+    //         case 32: 
+    //             sAssign = new Assign();
+    //             sAssign.parseSt();
+    //             break;
+    //         // If 
+    //         case 5: 
+    //             sIf = new If();
+    //             sIf.parseSt();
+    //             break;
+    //         // Loop 
+    //         case 9: 
+    //             sLoop = new Loop();
+    //             sLoop.parseSt();
+    //             break;
+    //         // out
+    //         case 11: 
+    //             sOut = new OutP();
+    //             sOut.parseSt();
+    //             break;
+    //         // Out 
+    //         case 10: 
+    //             sIn = new In();
+    //             sIn.parseSt();
+    //             break;
+    //     }
+    // }
 }

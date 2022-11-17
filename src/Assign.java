@@ -11,6 +11,7 @@ public class Assign extends Stmt{
         id.prettyPrint();
         System.out.print(" = ");
         exp.prettyPrint();
+        System.out.print(";");
     }
 
     public void execSt() {
@@ -18,13 +19,15 @@ public class Assign extends Stmt{
     }
 
     public void parseSt() { 
-        id = Id.parseId();
+        id = Id.parseId();  
         t.skipToken();
+
         // ensure = token 
         if (t.getToken() != 14) {
             System.out.println("ERROR: Expected an '=' between assignment did not receive");
             System.exit(0);
         } 
+        // skip =
         t.skipToken();
         exp = new Exp();
         exp.parseExp();
@@ -35,5 +38,6 @@ public class Assign extends Stmt{
         } 
         // skip past semicolon token 
         t.skipToken();
+
     }
 }

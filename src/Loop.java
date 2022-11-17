@@ -23,6 +23,8 @@ public class Loop {
             System.out.println("ERROR: Expected a 'loop' token, recieved invalid input");
             System.exit(0);   
         }
+        // skip loop token 
+        t.skipToken();
         // parse ss
         ss = new StmtSeq();
         ss.parseStmtSeq();
@@ -51,8 +53,10 @@ public class Loop {
         System.out.print("while ");
         c.prettyPrint();
         System.out.print(" loop\n");
+        StmtSeq.tabs += "\t";
         ss.prettyPrint();
-        System.out.println("end");
+        StmtSeq.tabs = StmtSeq.tabs.substring(0, StmtSeq.tabs.length()-1);
+        System.out.println("\n" + StmtSeq.tabs + "end;");
     }
 
     public void execSt() {

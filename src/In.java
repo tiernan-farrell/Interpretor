@@ -16,21 +16,27 @@ public class In {
         t.skipToken();
         // parse IdList
         list = new IdList();
-        list.parseIdList();
+        list.parseSSIdList();
+        t.skipToken();
         // Check for ending ; 
-        if (t.getToken() != 12) { 
+        if (t.getToken() != 12) {
             System.out.println("ERROR: Missing semicolon after read statement");
             System.exit(0);
         }
         // skip ; 
         t.skipToken(); 
     }
+
     public void printSt() { 
-        
+        System.out.print("read ");
+        list.prettyPrint();
+
     }
 
     public void execSt() {
-
+        // here we want to read values from the data file one 
+        // line at a time and assign them to the val of the id
+        list.execReadIdList();
     }
 
 

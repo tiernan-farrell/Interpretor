@@ -20,7 +20,7 @@ public class Decl {
         t.skipToken();
         // Create ID list node and parse that 
         idList = new IdList();
-        idList.parseIdList();
+        idList.parseDeclIdList();
         // ensure tehre is a semicolon after the idList
         if (t.getToken() != 12)  {
             System.out.println("ERROR: expected semicolon after id list not present");
@@ -35,5 +35,8 @@ public class Decl {
         idList.prettyPrint();
     }
 
+    public void execDec() {
+        
+    }
 }
 

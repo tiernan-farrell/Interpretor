@@ -3,6 +3,7 @@ public class Cond {
     private Comp com; 
     private Cond c1; 
     private Cond c2; 
+    private boolean isAnd;
 
     public Cond() { 
         t = Singleton.instance();
@@ -40,6 +41,9 @@ public class Cond {
                 System.out.println("ERROR: expected '&&' or '||' between conditions but did not receive it");
                 System.exit(0);   
             }
+            if (t.getToken() == 18) { 
+                isAnd = true;
+            }
             t.skipToken();
             // parse second condition
             c2 = new Cond();
@@ -56,11 +60,47 @@ public class Cond {
     
 
     public void prettyPrint() { 
-        
+        // If comp
+        if (com != null) {
+            com.prettyPrint();
+        } 
+        // check for cond 
+        else if (c1 != null && c2 == null) { 
+            System.out.print("!");
+            c1.prettyPrint();
+        } else if (c1 != null && c2 != null) { 
+            System.out.print("[");
+            c1.prettyPrint();
+            if (isAnd) { 
+                System.out.print(" && ");
+            } else {
+                System.out.print(" || ");
+            }
+            c2.prettyPrint();
+            System.out.println("]");
+        }
+
     }
 
     
     public boolean evalCond() { 
-        return true; 
-    }
+        // First cehck comp
+        if (com != null) { 
+            return com.evalComp();
+        } 
+        // check not cond
+        else if (c1 != null && c2 == null) { 
+            return !c1.evalCond();
+        }
+        // else we have either <cond> && <cond> or <cond> || <cond>
+        else { 
+            // check if and or or 
+            if (isAnd) { 
+                return c1.evalCond() && c2.evalCond();
+            }
+            else {
+                return c1.evalCond() || c2.evalCond();
+            }
+        }
+    } 
 }

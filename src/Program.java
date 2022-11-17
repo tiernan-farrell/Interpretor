@@ -27,6 +27,8 @@ public class Program {
             System.out.println("ERROR: invalid syntax, missing 'begin' keyword");
             System.exit(0);
         }
+        // skip begin token 
+        t.skipToken();
         // parse stmt seq
         stmtseq = new StmtSeq();
         stmtseq.parseStmtSeq();
@@ -41,22 +43,21 @@ public class Program {
     public void prettyPrint() { 
         // If we made it to the printing we assume that the tokens are valid 
         // First print program 
-        System.out.println("program ");
+        System.out.print("program ");
 
         // print decl seq
         decseq.prettyPrint();
         // print begin  
-        System.out.println("begin");
-
+        System.out.println("\tbegin");
         // print stmt seq
         stmtseq.prettyPrint();
         // print end 
-        System.out.println("end");
+        System.out.println("\n\tend;");
     }
 
     public void execProg(){ 
         // exec stmt seq
-        decseq.execDecSeq();
+        // decseq.execDecSeq();
         stmtseq.execStmtSeq();
     }
 }

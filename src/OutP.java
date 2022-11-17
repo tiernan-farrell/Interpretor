@@ -15,7 +15,8 @@ public class OutP {
         t.skipToken();
         // parse IdList
         list = new IdList();
-        list.parseIdList();
+        list.parseSSIdList();
+        t.skipToken();
         // check for ending ; 
         if (t.getToken() != 12) { 
             System.out.println("ERROR: Missing semicolon on write statement");
@@ -27,12 +28,13 @@ public class OutP {
 
 
     public void printSt() { 
-        
+        System.out.print("write ");
+        list.prettyPrint();
     }
 
     public void execSt() {
-        // Probably best to have ParseDeclIdList(), ParseDeclId(), ParseSSIdList() and ParseSSId() to provide context; similarly execReadIdList() and execWriteIdList() 
-
+        // Here we just want to print the ids and their corresponding values
+        list.execWriteIdList();
     }
 
 

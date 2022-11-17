@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthScrollBarUI;
+
 public class Id {
     private static Tokenizer t = Singleton.instance(); 
     String name; 
-    Integer val;
+    int val;
     boolean declared;
     boolean initialized; 
     static ArrayList<Id> ids; 
@@ -35,35 +37,42 @@ public class Id {
             ids = new ArrayList<Id>();
         }
         // Check if in ids
+    
+        // System.out.println("\n" + name + " in ids? ");
+        // for (int j = 0; j < Id.ids.size(); j++) { 
+        //     System.out.print(Id.ids.get(j).name + ": " + Id.ids.get(j).val + ", ");
+        // }
         for (int i = 0; i < ids.size(); i++) { 
-            if (name == ids.get(i).name) { 
+            // System.out.println("name: " + name + Id.ids.get(i).name);
+            if (name.equals(Id.ids.get(i).name)) { 
                 return ids.get(i);
             } 
         }
         // If not, create id, add to list, skip token and return id
         Id newId = new Id(name);
         ids.add(newId);
+        
+        idCount++;
         t.skipToken();
         return newId; 
     }
 
     public int getVal() { 
-        if (val == null)  {
-            System.out.println("ERROR: trying to get value for unitilialized ID");
+        if (Integer.valueOf(val) == null)  {
+            System.out.println("ERROR: trying to get value for unitilialized ID: " + name);
             System.exit(0);
         }
-
-        return val.intValue();
+        return ids.get(ids.indexOf(this)).val;
     }
 
     public void prettyPrint() { 
-        System.out.println(name + " = " + val);
+        System.out.print(name);
     }
 
-    public void assignValue(int val) { 
-        val = Integer.valueOf(val);
+    public void assignValue(int i) { 
+        ids.get(ids.indexOf(this)).val = i;
     }
-
+    
     public String getName() { 
         return name; 
     }

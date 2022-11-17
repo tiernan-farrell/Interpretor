@@ -26,10 +26,16 @@ public class DeclSeq {
 
     public void prettyPrint() { 
         dec.prettyPrint();
+        if (seq != null) { 
+            seq.prettyPrint();
+        }
     }
 
     public void execDecSeq() { 
-        
+        dec.execDec(); 
+        if (seq != null) {
+            seq.execDecSeq();
+        } 
     }
 
 }

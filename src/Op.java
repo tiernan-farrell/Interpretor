@@ -2,6 +2,8 @@ public class Op {
     private static Tokenizer t; 
     private Id id; 
     private Exp e; 
+    private Int i; 
+
     public Op () { 
         t = Singleton.instance();
     }
@@ -15,8 +17,8 @@ public class Op {
         // Case for int 
         if (t.getToken() == 31) {
             // parse int 
-            int val = t.intVal();
-            t.skipToken();
+            i = new Int(); 
+            i.parseInt();
         }
         else if (t.getToken() == 32) { 
             // parse ID
@@ -37,5 +39,33 @@ public class Op {
             // skip closing paren
             t.skipToken();
         }
+    }
+
+    public void prettyPrint() { 
+        if (i != null) { 
+            i.prettyPrint();
+        } else if (id != null) { 
+            id.prettyPrint();
+        } else if (e != null) { 
+            System.out.print("(");
+            e.prettyPrint();
+            System.out.print(")");
+        }
+    }
+
+    public int evalOp() { 
+        // Case ID
+        if (id != null) { 
+            return id.getVal();
+        } 
+        // Case int
+        else if (i != null) { 
+            return i.getVal();
+        }
+        // case exp
+        else  { 
+            return e.evalExp();
+        }
+
     }
 }

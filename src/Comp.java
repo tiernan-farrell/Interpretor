@@ -36,4 +36,39 @@ public class Comp {
         t.skipToken();
     } 
 
+    public void prettyPrint() {
+        System.out.print("(");
+        o1.prettyPrint();
+        cOp.prettyPrint();
+        o2.prettyPrint();
+        System.out.print(")");
+    }
+
+    public boolean evalComp() { 
+        // First get val of ops
+        int op1Val = o1.evalOp();
+        int op2Val = o2.evalOp();
+        // Find comparator 
+        String comp = cOp.execCompOp();
+
+        switch (comp) { 
+            case "!=": 
+                return op1Val != op2Val;
+            case "==": 
+                return op1Val == op2Val;
+            case "<": 
+                return op1Val < op2Val;
+            case ">": 
+                return op1Val > op2Val;
+            case "<=": 
+                return op1Val <= op2Val;
+            case ">=": 
+                return op1Val >= op2Val;
+        }
+        // If we reach here there is an error 
+        System.out.println(comp + " is not valid");
+        System.exit(0);
+        return false;
+    }
+
 }

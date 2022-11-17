@@ -54,14 +54,20 @@ public class If {
     public void printSt() { 
         System.out.print("if ");
         c.prettyPrint();
-        System.out.print(" then \n");
+        System.out.print(" then\n");
+        StmtSeq.tabs += "\t";
         ss1.prettyPrint();
         // Check for else 
+        StmtSeq.tabs = StmtSeq.tabs.substring(0, StmtSeq.tabs.length()-1);
         if (ss2 != null) { 
-            System.out.print("\nelse\n");
+            System.out.print("\n" + StmtSeq.tabs + "else\n");
+            StmtSeq.tabs += "\t";
             ss2.prettyPrint();
-        }
-        System.out.println("end");
+            StmtSeq.tabs = StmtSeq.tabs.substring(0, StmtSeq.tabs.length()-1);
+
+        }            
+
+        System.out.println("\n" + StmtSeq.tabs + "end;");
     }
 
     public void execSt() {

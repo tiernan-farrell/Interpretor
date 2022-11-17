@@ -260,9 +260,6 @@ public class Tokenizer {
     public void skipToken() {
         tokens.remove(0);
         tokenStrings.remove(0);
-        if (tokens.isEmpty()) { 
-            System.out.print("\n");
-        }
         while (tokens.isEmpty()) { 
             parseLine();    
         }
