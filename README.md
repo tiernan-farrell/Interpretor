@@ -1,18 +1,13 @@
-## Getting Started
+# Core Interpretor 
+## Tiernan Farrell
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Compiling and running code
+- compile code with the following command after unzipping: 
+    `javac App.java`
+- After compiling, code can be ran with the `java App` command
+- Test files are included in the test folder, these can be passed 
+  as command line arguments.
 
-## Folder Structure
+  For Example: 
+    `java App test/test1.txt test/data1.txt`
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
